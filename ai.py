@@ -5,10 +5,9 @@ import json
 import time
 from dotenv import load_dotenv
 loaded = load_dotenv()
-print("Loaded:", loaded)
-print("GROQ_API =", os.getenv("GROQ_API"))
+
 API_KEY = os.getenv('GROQ_API')
-print(API_KEY)
+
 SUMMARY="""
 You are an expert study assistant.
 

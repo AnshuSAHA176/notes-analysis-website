@@ -21,8 +21,11 @@ class Base(DeclarativeBase):
 login_manager = LoginManager()
 db = SQLAlchemy(model_class=Base)
 app=Flask(__name__)
-app.config['SECRET_KEY']=os.getenv('SECRET_KEY')
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+app.config['SECRET_KEY']=os.environ.get('SECRET_KEY')
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
+    "DATABASE_URL",
+    "sqlite:///project.db"
+)
 db.init_app(app)
 login_manager.init_app(app)
 
