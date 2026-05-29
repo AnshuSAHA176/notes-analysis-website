@@ -1,3 +1,5 @@
+from sys import platform
+
 from PyPDF2 import PdfReader
 import os 
 from docx import Document
@@ -41,7 +43,10 @@ class File_Reader():
 
     def screenshot_photo_reader(self):
 
-            pytesseract.pytesseract.tesseract_cmd = r'/opt/homebrew/bin/tesseract'
+            import platform
+
+            if platform.system() == "Darwin":  # MacOS
+                 pytesseract.pytesseract.tesseract_cmd = "/opt/homebrew/bin/tesseract"
 
             image = Image.open(self.file_path)
 
