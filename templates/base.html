@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FlashMind AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="bg"></div>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h1 class="logo">
+            ⚡ FlashMind
+        </h1>
+        {% if not current_user.is_authenticated %}
+
+        <nav>
+
+            <a href="{{url_for('ragister')}}" class="nav-link">
+                Ragister
+            </a>
+            Already have account:
+
+
+            <a href="{{url_for('login')}}" class="nav-link">
+                Login
+            </a>
+
+        </nav>
+        {%else%}
+
+        <nav>
+
+            <a href="{{url_for('profile')}}" class="nav-link">
+                Profile
+            </a>
+            <a href="{{url_for('dashbord')}}" class="nav-link">
+                Dashboard
+            </a>
+
+            <a href="{{url_for('upload')}}" class="nav-link">
+                Upload
+            </a>
+
+
+
+
+            <a href="{{url_for('summaries')}}" class="nav-link">
+                Summary
+            </a>
+
+            <a href="{{url_for('quiz_history')}}" class="nav-link">
+                Quiz history
+            </a>
+            <a href="{{url_for('log_out')}}" class="nav-link"
+                onclick="return confirm('Are you sure you want to log out?')">
+
+                Log out
+
+            </a>
+            {%endif%}
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+</body>
+
+</html>

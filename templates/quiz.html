@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="quiz-wrapper">
+
+    <h1 class="quiz-title">
+        AI Quiz
+    </h1>
+
+    <form method="POST" action="{{url_for('scoreing',upload_id=id)}}">
+
+        <div class="quiz-container">
+
+            {% for quiz in quizs %}
+
+            <div class="quiz-card">
+
+                <div class="question-badge">
+
+                    Question {{ loop.index }}
+
+                </div>
+
+                <h2 class="question-text">
+
+                    {{ quiz.question }}
+
+                </h2>
+
+                <div class="options-grid">
+
+                    <label class="quiz-option">
+
+                        <input type="radio"
+                               name="question_{{ quiz.id }}"
+                               value="A">
+
+                        <span>{{ quiz.option_a }}</span>
+
+                    </label>
+
+                    <label class="quiz-option">
+
+                        <input type="radio"
+                               name="question_{{ quiz.id }}"
+                               value="B">
+
+                        <span>{{ quiz.option_b }}</span>
+
+                    </label>
+
+                    <label class="quiz-option">
+
+                        <input type="radio"
+                               name="question_{{ quiz.id }}"
+                               value="C">
+
+                        <span>{{ quiz.option_c }}</span>
+
+                    </label>
+
+                    <label class="quiz-option">
+
+                        <input type="radio"
+                               name="question_{{ quiz.id }}"
+                               value="D">
+
+                        <span>{{ quiz.option_d }}</span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="submit-area">
+
+            <button class="submit-btn">
+
+                Submit Quiz
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

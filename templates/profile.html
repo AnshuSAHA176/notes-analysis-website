@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+
+    Your Profile
+
+</h1>
+
+<div class="profile-container">
+
+    <div class="glass-card profile-card">
+
+        <h2>
+            Profile Information
+        </h2>
+
+        <div class="profile-info">
+
+            <div class="info-box">
+
+                <h3>
+                    Username
+                </h3>
+
+                <p>
+                    {{user.username}}
+                </p>
+
+            </div>
+
+            <div class="info-box">
+
+                <h3>
+                    Email
+                </h3>
+
+                <p>
+                    {{user.email}}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card-grid">
+
+        <div class="card-3d">
+
+            <h3>Total Uploads</h3>
+
+            <h1>{{upload_count}}</h1>
+
+        </div>
+
+        <div class="card-3d">
+
+            <h3>Total Flashcards</h3>
+
+            <h1>{{flask_count}}</h1>
+
+        </div>
+
+        <div class="card-3d">
+
+            <h3>Total Quizzes</h3>
+
+            <h1>{{quiz_count}}</h1>
+
+        </div>
+
+        <div class="card-3d">
+
+            <h3>Average Score</h3>
+
+            <h1>{{avarage_score}}%</h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

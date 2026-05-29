@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+    AI Summary
+</h1>
+
+<div class="glass-card summary-box">
+
+    <p class="summary-text">
+        {{ summary | safe }}
+    </p>
+
+    <div class="summary-actions">
+
+        <form action="{{url_for('flaskcard',id=upload_id)}}" method="POST">
+
+            <button class="flashcard-btn">
+
+                Generate Flashcards
+
+            </button>
+
+
+        </form>
+
+        <form action="{{url_for('quiz',id=upload_id)}}" method="POST">
+
+            <button class="quiz-btn-custom">
+
+                Generate Quiz
+
+            </button>
+            
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

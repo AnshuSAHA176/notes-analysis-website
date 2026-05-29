@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+    Dashboard
+</h1>
+
+<div class="card-grid">
+
+    <div class="card-3d">
+
+        <h3>Total Flashcards</h3>
+
+        <h1>{{flaskcard_count}}</h1>
+
+    </div>
+
+    <div class="card-3d">
+
+        <h3>Quiz Taken</h3>
+
+        <h1>{{quiz_count}}</h1>
+
+    </div>
+
+    <div class="card-3d">
+
+        <h3>Study Streak</h3>
+
+        <h1>{{upload_count}}</h1>
+
+    </div>
+    <div class="quick-actions">
+
+    <a href="{{url_for('upload')}}">
+
+        <button class="action-btn">
+
+            Upload Notes
+
+        </button>
+
+    </a>
+
+    <a href="{{url_for('notes',file=latest_upload.saved_filename)}}">
+
+        <button class="action-btn">
+
+            Continue Learning
+
+        </button>
+
+    </a>
+
+    
+
+</div>
+
+</div>
+
+<div class="glass-card">
+
+    <h2>
+        Weekly Progress
+    </h2>
+
+    <canvas id="chart"></canvas>
+    <div class="glass-card chart-card">
+
+    <h2>
+        Weekly Progress
+    </h2>
+
+    <canvas id="studyChart"></canvas>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx = document.getElementById('studyChart');
+
+new Chart(ctx, {
+
+    type:'line',
+
+    data:{
+
+        labels:{{chart_lable | tojson}},
+
+        datasets:[{
+
+            label:'Study Hours',
+
+            data:{{chart_valu | tojson}},
+
+            borderColor:'#7c5cfc',
+
+            backgroundColor:'rgba(124,92,252,0.2)',
+
+            tension:0.4,
+
+            fill:true
+
+        }]
+
+    },
+
+    options:{
+
+        responsive:true,
+
+        plugins:{
+
+            legend:{
+                labels:{
+                    color:'white'
+                }
+            }
+
+        },
+
+        scales:{
+
+            x:{
+                ticks:{
+                    color:'#94a3b8'
+                },
+
+                grid:{
+                    color:'rgba(255,255,255,0.05)'
+                }
+            },
+
+            y:{
+                ticks:{
+                    color:'#94a3b8'
+                },
+
+                grid:{
+                    color:'rgba(255,255,255,0.05)'
+                }
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+<div class="glass-card recent-card">
+
+    <h2>
+        Recent Uploads
+    </h2>
+
+    <div class="recent-list">
+
+        {% for upload in recent_uploads %}
+
+        <div class="recent-item">
+
+            <div>
+
+                <h3>
+                    {{ upload.original_filename }}
+                </h3>
+
+                <p>
+                    {{ upload.upload_date }}
+                </p>
+
+            </div>
+
+            <div class="recent-actions">
+
+                <a href="{{ url_for('summary', upload_id=upload.id) }}">
+
+                    <button class="recent-summary-btn">
+                        Summary
+                    </button>
+
+                </a>
+
+                <a href="{{ url_for('quiz', id=upload.id) }}">
+
+                    <button class="recent-quiz-btn">
+                        Quiz
+                    </button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+</div>
+
+
+{% endblock %}

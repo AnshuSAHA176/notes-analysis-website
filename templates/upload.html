@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+    Upload Notes
+</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <input type="file" id="fileInput" name="file" hidden>
+
+    <div class="upload-box" id="dropArea">
+
+        <div class="upload-icon">
+            ☁️
+        </div>
+
+        <h2>
+            Drag & Drop Files
+        </h2>
+
+        <p>
+            PDF, DOCX, TXT
+        </p>
+
+        <button type="button" class="btn-primary" onclick="document.getElementById('fileInput').click()">
+            Browse Files
+        </button>
+
+        <button type="submit" class="btn-primary">
+            Upload File
+        </button>
+
+        <p id="fileName" style="margin-top:20px;"></p>
+
+    </div>
+
+</form>
+
+<script>
+
+    const dropArea = document.getElementById("dropArea");
+    const fileInput = document.getElementById("fileInput");
+    const fileName = document.getElementById("fileName");
+
+    dropArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropArea.classList.add("dragging");
+    });
+
+    dropArea.addEventListener("dragleave", () => {
+        dropArea.classList.remove("dragging");
+    });
+
+    dropArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+
+        dropArea.classList.remove("dragging");
+
+        const files = e.dataTransfer.files;
+
+        if (files.length > 0) {
+            fileInput.files = files;
+            fileName.textContent = files[0].name;
+        }
+    });
+
+    fileInput.addEventListener("change", () => {
+
+        if (fileInput.files.length > 0) {
+            fileName.textContent = fileInput.files[0].name;
+        }
+
+    });
+
+</script>
+
+{% endblock %}

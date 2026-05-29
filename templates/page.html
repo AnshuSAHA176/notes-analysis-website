@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+    Extracted Notes
+</h1>
+
+<div class="notes-layout">
+
+    <!-- NOTES -->
+
+    <div class="glass-card notes-box">
+
+        <div class="notes-header">
+
+            <h2>
+                Uploaded Notes
+            </h2>
+
+            <button
+                class="generate-btn"
+                onclick="showLoader()">
+
+                Generate Summary
+
+            </button>
+
+        </div>
+
+        <!-- LOADING SECTION -->
+
+        <div class="progress-container">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+        <p class="loading-text">
+            Generating summary...
+        </p>
+
+        <!-- NOTES -->
+
+        <div class="notes-content">
+
+            <p>
+
+                {{ extracted_text }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- SIDE PANEL -->
+
+    <div class="glass-card ai-info">
+
+        <h2>
+            AI Processing
+        </h2>
+
+        <div class="info-item">
+
+            <span>
+                Flashcards
+            </span>
+
+            <strong>
+                Ready
+            </strong>
+
+        </div>
+
+        <div class="info-item">
+
+            <span>
+                Quiz
+            </span>
+
+            <strong>
+                Ready
+            </strong>
+
+        </div>
+
+        <div class="info-item">
+
+            <span>
+                Summary
+            </span>
+
+            <strong>
+                Ready
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function showLoader() {
+
+    document.querySelector(".progress-container").style.display = "block";
+
+    document.querySelector(".loading-text").style.display = "block";
+
+    document.querySelector(".generate-btn").disabled = true;
+
+    setTimeout(function () {
+
+        window.location.href =
+        "{{url_for('summary',upload_id=upload_id)}}";
+
+    }, 1000);
+
+}
+
+</script>
+
+{% endblock %}

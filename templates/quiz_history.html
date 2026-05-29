@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+
+    Quiz History
+
+</h1>
+
+<div class="summary-grid">
+
+    {% for quiz in quizzes %}
+
+    <div class="glass-card summary-card">
+
+        <h2>
+
+            Quiz #{{ quiz.id }}
+
+        </h2>
+
+        <p>
+
+            Score:
+            {{ quiz.score }}/{{quiz.total_quizs}}
+
+        </p>
+        <p>
+
+            Percentage:
+            {{ (quiz.score/quiz.total_quizs)*100 |round}}
+
+        </p>
+        <p>
+
+            Date:
+            {{ quiz.created_at}}
+
+        </p>
+
+        <p>
+
+            Upload ID:
+            {{ quiz.upload_id }}
+
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

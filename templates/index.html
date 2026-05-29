@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="hero">
+
+    <div class="hero-left">
+
+        <span class="badge">
+            AI Powered Learning
+        </span>
+
+        <h1>
+            Turn Notes Into
+            <span>
+                Smart Flashcards
+            </span>
+        </h1>
+
+        <p>
+            Upload PDFs and generate flashcards,
+            quizzes, and summaries instantly.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/upload"
+               class="btn-primary">
+
+                Get Started
+
+            </a>
+
+            <a href="/flashcards"
+               class="btn-secondary">
+
+                Explore
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+        <div class="floating-card">
+
+            <span class="small-badge">
+                AI Flashcard
+            </span>
+
+            <h2>
+                What is Flask?
+            </h2>
+
+            <p>
+                Flask is a lightweight Python
+                web framework.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

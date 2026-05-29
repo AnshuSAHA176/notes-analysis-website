@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="score-wrapper">
+
+    <div class="score-card">
+
+        <div class="score-badge">
+
+            Quiz Completed
+
+        </div>
+
+        <h1 class="score-title">
+
+            Your Score
+
+        </h1>
+
+        <div class="score-circle">
+
+            {{ score }}/{{ total }}
+
+        </div>
+
+        <div class="percentage-box">
+
+            {{ percentage }}%
+
+            
+
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <h3>
+                    Correct
+                </h3>
+
+                <p>
+                    {{score}}
+                </p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3>
+                    Wrong
+                </h3>
+
+                <p>
+                    {{ total - score }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="score-actions">
+
+            <a href="{{url_for('quiz',id=upload_id)}}" class="retry-btn">
+
+                Retry Quiz
+
+            </a>
+
+            <a href="{{url_for('dashbord')}}" class="dashboard-btn">
+
+                Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

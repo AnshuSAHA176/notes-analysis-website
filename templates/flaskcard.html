@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+    AI Flashcards
+</h1>
+
+<div class="flash-grid">
+    {% for card in cards %}
+
+<div class="flash-card" onclick="this.classList.toggle('active')">
+
+    <div class="flash-question">
+        {{ card.question }}
+    </div>
+
+    <div class="flash-answer">
+        {{ card.answer }}
+    </div>
+
+</div>
+
+{% endfor %}
+    
+
+    
+
+</div>
+
+{% endblock %}

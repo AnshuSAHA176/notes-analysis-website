@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+
+    Your Summaries
+
+</h1>
+
+<div class="summary-grid">
+
+    {% for upload in uploads %}
+
+    <div class="glass-card summary-card">
+
+        <h2 class="summary-file-name">
+
+            {{ upload.original_filename }}
+
+        </h2>
+
+        <p class="summary-date">
+
+            Uploaded:
+            {{ upload.upload_date }}
+
+        </p>
+
+        <div class="summary-buttons">
+
+            <a href="{{ url_for('summary', upload_id=upload.id) }}">
+
+                <button class="open-summary-btn">
+
+                    Open Summary
+
+                </button>
+
+            </a>
+
+            <a href="{{ url_for('quiz', id=upload.id) }}">
+
+                <button class="quiz-summary-btn">
+
+                    Quiz
+
+                </button>
+
+            </a>
+
+            <a href="{{ url_for('flaskcard', id=upload.id) }}">
+
+                <button class="flashcard-summary-btn">
+
+                    Flashcards
+
+                </button>
+
+            </a>
+            <form action="{{url_for('delete_upload', id=upload.id)}}" method="POST"
+                onsubmit="return confirm('Are you sure you want to delete this upload?')">
+
+                <button class="delete-btn">
+
+                    Delete
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
