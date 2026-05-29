@@ -6,7 +6,7 @@ import time
 from dotenv import load_dotenv
 loaded = load_dotenv()
 
-API_KEY = os.getenv('GROQ_API')
+API_KEY = os.environ.get('GROQ_API')
 
 SUMMARY="""
 You are an expert study assistant.
