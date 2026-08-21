@@ -1,3 +1,6 @@
+
+#main app created using flask
+
 from flask import Flask,render_template,redirect,url_for,request,flash
 import os
 import uuid
